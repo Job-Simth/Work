@@ -1,4 +1,4 @@
-package com.krokky.pro0421.陈幸;
+package com.krokky.pro0421.cx;
 
 public class Addition {
     public int add(int i, int j) {

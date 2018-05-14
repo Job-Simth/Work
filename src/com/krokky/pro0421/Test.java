@@ -1,6 +1,6 @@
 package com.krokky.pro0421;
 
-import com.krokky.pro0421.陈幸.Addition;
+import com.krokky.pro0421.cx.Addition;
 
 public class Test {
     public static void main(String[] args) {
