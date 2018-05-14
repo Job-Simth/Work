@@ -2,8 +2,8 @@ package com.krokky.pro0512.d;
 
 public class Person {
     private Integer age;
-    private String name;
-    private Character sex;
+    public String name;
+    public Character sex;
     public void run(){
         System.out.println(name+ "正在跑步");
     }

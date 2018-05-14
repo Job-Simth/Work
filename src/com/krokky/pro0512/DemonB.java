@@ -43,7 +43,7 @@ public class DemonB {
             g.drawString(str, 80, 60);
 
             //加入干扰点
-            for (int i = 0; i < 55; i++) {
+            for (int i = 0; i < 60; i++) {
                 int red1 = (int) (Math.random() * 256);
                 int green1 = (int) (Math.random() * 256);
                 int blue1 = (int) (Math.random() * 256);

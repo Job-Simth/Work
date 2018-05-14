@@ -1,13 +1,13 @@
 package com.krokky.pro0512.reflect;
 
-import com.krokky.pro0512.d.Demo;
+import com.krokky.pro0512.d.Demon;
 
 public class DemonA {
     public static void main(String[] args) {
         try {
             Class c1 = Class.forName("com.krokky.pro0512.d.Demo");//用的最多
-            Class c2 = new Demo().getClass();
-            Class c3 = Demo.class;
+            Class c2 = new Demon().getClass();
+            Class c3 = Demon.class;
             Class c4 = Character.TYPE;
 
             System.out.println(c1);

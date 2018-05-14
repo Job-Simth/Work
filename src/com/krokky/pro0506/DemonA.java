@@ -1,4 +1,4 @@
-package com.pro0506;
+package com.krokky.pro0506;
 
 import java.io.*;
 
