@@ -12,11 +12,14 @@ public class Clock extends JFrame {
     public Clock(){
         jl = new JLabel(getNowDate(),SwingConstants.CENTER);
         jl.setFont(new Font("",Font.BOLD,40));
+        jl.setForeground(new Color(0xCF5BFF));
         add(jl);
-        setBounds(0,0,180,50);
-        setLocationRelativeTo(null);
+        int width = 165;
+        setBounds(1920-width,0,width,40);
+//        setLocationRelativeTo(null);
         setUndecorated(true);
         setBackground(new Color(0,0,0,0));
+        setAlwaysOnTop(true);
         setVisible(true);
 
         Timer timer = new Timer();
