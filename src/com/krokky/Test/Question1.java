@@ -2,11 +2,11 @@ package com.krokky.Test;
 
 import java.io.*;
 
-public class MyWork {
+public class Question1 {
     public static void main(String[] args) {
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("e:\\b.txt"),"GBK"));
-            FileWriter fw = new FileWriter("e:\\test1.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("e:\\a.txt"),"GBK"));
+            FileWriter fw = new FileWriter("e:\\b.txt");
             String str ;
             while ((str=br.readLine())!=null){
                 fw.write(str+"\r\n");

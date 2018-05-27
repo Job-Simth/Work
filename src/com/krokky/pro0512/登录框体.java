@@ -15,14 +15,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class DemonC extends JFrame {
+public class 登录框体 extends JFrame {
     private JLabel name, pass, card, imageCard;
     private JTextField nameText, passText, cardText;
     private JButton login;
     private int width = 100, height = 30;
     private String str = "";
 
-    public DemonC() {
+    public 登录框体() {
         setTitle("登录窗体");
         setFont(new Font("", Font.BOLD, 24));
         setLayout(null);//自定义布局
@@ -131,6 +131,6 @@ public class DemonC extends JFrame {
     }
 
     public static void main(String[] args) {
-        new DemonC();
+        new 登录框体();
     }
 }

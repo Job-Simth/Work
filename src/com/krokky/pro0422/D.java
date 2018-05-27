@@ -44,7 +44,7 @@ public class D {
     }
 
     public static void main(String[] args) {
-        new D().d2();
+        new D().b();
     }
 }
 
