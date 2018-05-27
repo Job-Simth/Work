@@ -63,7 +63,7 @@ public class 登录框体 extends JFrame {
         add(login);
 
         //注册事件
-        addMouseListener(new ChangeCard());
+        imageCard.addMouseListener(new ChangeCard());
 
         setBounds(0, 0, 450, 260);
         setLocationRelativeTo(null);
