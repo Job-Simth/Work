@@ -2,7 +2,7 @@ package com.krokky.Test;
 
 import java.io.*;
 
-public class test {
+public class CopyTxt {
     public static void main(String[] args) {
         FileWriter fw ;
         BufferedReader br ;
