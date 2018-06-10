@@ -12,8 +12,9 @@ public class interfaceDemo {
 }
 
 interface Vehicle {
-    public  abstract void start(String s);
-    public  abstract void stop(String s);
+    void start(String s);
+
+    void stop(String s);
 }
 class Bike implements Vehicle{
 
