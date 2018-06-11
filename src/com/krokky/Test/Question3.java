@@ -11,6 +11,7 @@ public class Question3 {
         }
         List<Map.Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
         //然后通过比较器来实现排序
+//        Collections.sort(list, Comparator.comparing(Map.Entry::getValue));
         Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
             @Override
             public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
@@ -28,26 +29,25 @@ public class Question3 {
         for (int j = 0; j < 30; i++, j++) {
             ts.add(new student(i, (int) (Math.random() * 40 + 60)));
         }
-        for (student s:ts
-             ) {
+        for (student s : ts) {
             System.out.println("学号：" + s.getNumber() + "成绩:" + s.getValue());
         }
     }
 
-    public void useList(){
+    public void useList() {
         int i = 20070301;
         List<student> list = new ArrayList<>();
         for (int j = 0; j < 30; i++, j++) {
             list.add(new student(i, (int) (Math.random() * 40 + 60)));
         }
         Collections.sort(list);
-        for (student s:list
-                ) {
+        for (student s : list) {
             System.out.println("学号：" + s.getNumber() + "成绩:" + s.getValue());
         }
     }
+
     public static void main(String[] args) {
-        new Question3().useList();
+        new Question3().useMap();
     }
 }
 
@@ -76,7 +76,6 @@ class student implements Comparable<student> {
     public void setValue(int value) {
         Value = value;
     }
-
 
 
     @Override
