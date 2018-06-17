@@ -1,4 +1,4 @@
-package com.krokky.pro0513;
+package com.krokky.线程;
 //创建线程的方式一
 public class DemonA {
     public static void main(String[] args) {

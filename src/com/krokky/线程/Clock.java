@@ -1,4 +1,4 @@
-package com.krokky.pro0513;
+package com.krokky.线程;
 
 import javax.swing.*;
 import java.awt.*;

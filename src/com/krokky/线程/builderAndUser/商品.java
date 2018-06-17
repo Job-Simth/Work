@@ -1,4 +1,4 @@
-package com.krokky.pro0513.builderAndUser;
+package com.krokky.线程.builderAndUser;
 
 public class 商品 {
     private Integer id;

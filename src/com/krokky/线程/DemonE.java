@@ -1,4 +1,4 @@
-package com.krokky.pro0513;
+package com.krokky.线程;
 //阻塞的两个常见方法
 public class DemonE {
     public static void main(String[] args) {

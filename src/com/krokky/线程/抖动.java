@@ -1,8 +1,8 @@
-package com.krokky.pro0513;
+package com.krokky.线程;
 
 import javax.swing.*;
-import java.util.TimerTask;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class 抖动 extends JFrame {
     int x;
