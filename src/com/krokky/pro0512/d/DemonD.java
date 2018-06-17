@@ -21,10 +21,10 @@ public class DemonD {
                 System.out.println(ms2[i].getName());
             }
 
-            Method m1 = c.getMethod("study", new Class[]{});
+            Method m1 = c.getMethod("study");
 
             //调用方法
-            Object 返回值 = m1.invoke(c.newInstance(), new Object[]{});
+            Object 返回值 = m1.invoke(c.newInstance());
 
         } catch (Exception e) {
             e.printStackTrace();
