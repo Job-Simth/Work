@@ -1,4 +1,4 @@
-package com.krokky.IOStream.com.krokky.网络编程.udp;
+package com.krokky.网络编程.udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

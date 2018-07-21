@@ -1,4 +1,4 @@
-package com.krokky.IOStream.com.krokky.网络编程;
+package com.krokky.网络编程;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;

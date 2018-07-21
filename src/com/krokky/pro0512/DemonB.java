@@ -1,13 +1,10 @@
 package com.krokky.pro0512;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 public class DemonB {
 
@@ -17,6 +14,7 @@ public class DemonB {
 
             int width = 220;
             int height = 120;
+            int textSize = 60;
             int imageType = BufferedImage.TYPE_INT_RGB;
 
             BufferedImage image = new BufferedImage(width, height, imageType);
@@ -37,13 +35,16 @@ public class DemonB {
             Color c2 = new Color(red, green, blue);
             g.setColor(c2);
 
-            Font font = new Font("", Font.BOLD, 36);
+            int x = (int) (Math.random() * (width / 3));
+            int y = (int) (Math.random() * (height / 2) + 10);
+
+            Font font = new Font("", Font.BOLD, textSize);
 
             g.setFont(font);
-            g.drawString(str, 80, 60);
+            g.drawString(str, x, y);
 
             //加入干扰点
-            for (int i = 0; i < 60; i++) {
+            for (int i = 0; i < 36; i++) {
                 int red1 = (int) (Math.random() * 256);
                 int green1 = (int) (Math.random() * 256);
                 int blue1 = (int) (Math.random() * 256);

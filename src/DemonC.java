@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -20,7 +21,7 @@ public class DemonC {
         try {
             //通过类加载器获取到pro.properties文件
             InputStream is = DemonC.class.getClassLoader().getResourceAsStream("pro.properties");
-            String path = DemonC.class.getClassLoader().getResource("pro.properties").getPath();
+            String path = Objects.requireNonNull(DemonC.class.getClassLoader().getResource("pro.properties")).getPath();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             //获取到配置文件

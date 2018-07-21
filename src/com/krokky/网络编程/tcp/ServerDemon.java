@@ -1,4 +1,4 @@
-package com.krokky.IOStream.com.krokky.网络编程.tcp;
+package com.krokky.网络编程.tcp;
 
 import java.io.IOException;
 import java.io.OutputStream;

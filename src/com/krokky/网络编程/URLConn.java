@@ -1,4 +1,4 @@
-package com.krokky.IOStream.com.krokky.网络编程;
+package com.krokky.网络编程;
 
 import java.net.MalformedURLException;
 import java.net.URL;
