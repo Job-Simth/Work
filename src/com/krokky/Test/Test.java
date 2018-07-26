@@ -1,10 +1,24 @@
 package com.krokky.Test;
 
-import java.util.Arrays;
-
 public class Test {
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 6};
-        System.out.println(Arrays.toString(a));
+        System.out.println(SubClass.value);
     }
 }
+
+class SuperClass {
+    public final static int value = 123;
+
+    static {
+        System.out.println("---SuperClass init---");
+    }
+}
+
+class SubClass extends SuperClass {
+    static {
+        System.out.println("---SubClass init---");
+    }
+}
+
+//SuperClass[] arr = new SuperClass[10];
+//        System.out.println(arr.toString());
