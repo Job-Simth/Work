@@ -43,6 +43,6 @@ public class DemonC {
     }
 
     public static void main(String[] args) {
-        new DemonC().b();
+        new DemonC().a();
     }
 }
