@@ -24,7 +24,7 @@ public class 代码块运行顺序 {
     }
 
     public 代码块运行顺序(String s1, String s2) {
-        System.out.println(s1 + "；" + s2);// Step 5
+        System.out.println(s1 + "；12121" + s2);// Step 5
     }
 
     public static void main(String[] args) {
