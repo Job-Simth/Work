@@ -1,6 +1,6 @@
 package com.krokky.leetcode_Practice;
 
-class Solution4 {
+class Solution9990 {
     public int[] searchRange(int[] nums, int target) {
         return search2(nums, target);    //非递归
         /*
@@ -121,7 +121,7 @@ public class 搜索范围 {
     public static void main(String[] args) {
         int[] nums = {2, 3, 4, 5, 5, 5, 6, 6, 6, 9, 9};
         int target = 6;
-        int[] ret = new Solution4().searchRange(nums, target);
+        int[] ret = new Solution9990().searchRange(nums, target);
 
         String out = integerArrayToString(ret);
 

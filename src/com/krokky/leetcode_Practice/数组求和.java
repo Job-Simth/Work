@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  * 解释: 输入数组表示数字 10。
  */
 
-class Solution1 {
+class Solution99 {
     public int[] plusOne(int[] digits) {
         int[] temp = new int[digits.length + 1];
         digits[digits.length - 1]++;
@@ -75,7 +75,7 @@ public class 数组求和 {
         while ((line = in.readLine()) != null) {
             int[] digits = stringToIntegerArray(line);
 
-            int[] ret = new Solution1().plusOne(digits);
+            int[] ret = new Solution99().plusOne(digits);
 
             String out = integerArrayToString(ret);
 

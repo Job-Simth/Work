@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class Solution5 {
+class Solution55 {
     public double myPow(double x, int n) {
         double answer = 1;
         long n_abs = Math.abs((long) n);
@@ -44,7 +44,7 @@ public class PowNumber {
             line = in.readLine();
             int n = Integer.parseInt(line);
 
-            double ret = new Solution5().myPow(x, n);
+            double ret = new Solution55().myPow(x, n);
 
             System.out.println(ret);
         }

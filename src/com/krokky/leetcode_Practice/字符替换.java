@@ -13,7 +13,7 @@ import java.util.List;
  * 3.如果 n 同时是3和5的倍数，输出 “FizzBuzz”。
  */
 
-class Solution2 {
+class Solution999 {
     public List<String> fizzBuzz(int n) {
         List<String> list = new ArrayList<>();
         for (int i = 1; i <= n; i++) {
@@ -53,7 +53,7 @@ public class 字符替换 {
         while ((line = in.readLine()) != null) {
             int n = Integer.parseInt(line);
 
-            List<String> ret = new Solution2().fizzBuzz(n);
+            List<String> ret = new Solution999().fizzBuzz(n);
 
             String out = stringListToString(ret);
 

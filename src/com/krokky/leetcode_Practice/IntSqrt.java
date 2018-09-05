@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class Solution6 {
+class Solution666 {
     public int mySqrt(int x) {
         int answer = 0;
         if (x == 0 || x == 1)
@@ -23,7 +23,7 @@ public class IntSqrt {
         while ((line = in.readLine()) != null) {
             int x = Integer.parseInt(line);
 
-            int ret = new Solution6().mySqrt(x);
+            int ret = new Solution666().mySqrt(x);
 
             String out = String.valueOf(ret);
 

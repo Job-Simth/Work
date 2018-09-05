@@ -1,6 +1,6 @@
 package com.krokky.leetcode_Practice;
 
-class Solution3 {
+class Solution2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode answer = new ListNode(0);
         ListNode head = answer;
@@ -27,7 +27,7 @@ class Solution3 {
     }
 }
 
-public class 两数相加 {
+public class leetcode002 {
     public static String listNodeToString(ListNode node) {
         if (node == null) {
             return "[]";
@@ -50,7 +50,7 @@ public class 两数相加 {
         ListNode l2 = new ListNode(5);
         l2.next = new ListNode(6);
 
-        ListNode ret = new Solution3().addTwoNumbers(l1, l2);
+        ListNode ret = new Solution2().addTwoNumbers(l1, l2);
 
         String out = listNodeToString(ret);
 
