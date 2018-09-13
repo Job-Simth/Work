@@ -1,7 +1,5 @@
 package com.krokky.Test;
 
-import java.util.Scanner;
-
 public class KMP {
     //    public int KMP(){
 //     int KMP(char *str, int slen, char *ptr, int plen)
@@ -26,20 +24,20 @@ public class KMP {
 //        return -1;
 //    }
 
-    public static int[] cal_next(char[] str, int[] next) {
-        next[0] = -1;//next[0]初始化为-1，-1表示不存在相同的最大前缀和最大后缀
-        int k = -1;//k初始化为-1
-        for (int q = 1; q < str.length; q++) {
-            while (k > -1 && str[k + 1] != str[q]) {//如果下一个不同，那么k就变成next[k]，注意next[k]是小于k的，无论k取任何值。
-                k = next[k];//往前回溯
-            }
-            if (str[k + 1] == str[q]) {//如果相同，k++
-                k = k + 1;
-            }
-            next[q] = k;//这个是把算的k的值（就是相同的最大前缀和最大后缀长）赋给next[q]
-        }
-        return next;
-    }
+//    public static int[] cal_next(char[] str, int[] next) {
+//        next[0] = -1;//next[0]初始化为-1，-1表示不存在相同的最大前缀和最大后缀
+//        int k = -1;//k初始化为-1
+//        for (int q = 1; q < str.length; q++) {
+//            while (k > -1 && str[k + 1] != str[q]) {//如果下一个不同，那么k就变成next[k]，注意next[k]是小于k的，无论k取任何值。
+//                k = next[k];//往前回溯
+//            }
+//            if (str[k + 1] == str[q]) {//如果相同，k++
+//                k = k + 1;
+//            }
+//            next[q] = k;//这个是把算的k的值（就是相同的最大前缀和最大后缀长）赋给next[q]
+//        }
+//        return next;
+//    }
 
     public static int KMP(String ts, String ps) {
         char[] t = ts.toCharArray();
@@ -85,13 +83,19 @@ public class KMP {
     }
 
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        while (s.hasNext()) {
-            String ps = s.next();
-            String str = s.next();
-            int x = Math.max(KMP(ps, str), KMP(str, ps));
-            System.out.println(x);
-        }
+//        Scanner s = new Scanner(System.in);
+//        while (s.hasNext()) {
+//            String ps = s.next();
+//            String str = s.next();
+//            int x = Math.max(KMP(ps, str), KMP(str, ps));
+//            System.out.println(x);
+//        }
+        String s = "abcabc";
+        String s1 = "ab";
+        if (s.contains(s1) || (s1.contains(s))) {
+            System.out.println(1);
+        } else
+            System.out.println(0);
 //        System.out.println(x + "," + (x + str.length()));
 //        System.out.println(ps.substring(x, x + str.length()));
 //        int[] next = getNext(str);
