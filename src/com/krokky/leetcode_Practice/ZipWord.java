@@ -3,14 +3,14 @@ package com.krokky.leetcode_Practice;
 public class ZipWord {
     public static void main(String[] args) {
         char[] chars = {'a'};
-        int i = new Solution8().compress(chars);
+        int i = new Solution80().compress(chars);
         for (int j = 0; j < i; j++) {
             System.out.print(chars[j]+" ");
         }
     }
 }
 
-class Solution8 {
+class Solution80 {
     public int compress(char[] chars) {
         int count = 1;
         int temp = 0;
