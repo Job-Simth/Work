@@ -41,119 +41,79 @@ public class DES {
     }
 
 
-    public long[] CBCEncrypt(long plainTexts[], long key, long IV) {
-        return CBCMode(plainTexts, key, IV, true);
-    }
-
-    /**
-     * Wrapper for CBCMode(), specifying encryption.
-     */
-    public long[] CBCDecrypt(long cipherTexts[], long key, long IV) {
-        return CBCMode(cipherTexts, key, IV, false);
-    }
-
-    /**
-     * Wrapper for cipher(), specifying encryption.
-     */
     public long encrypt(long block, long key) {
         return cipher(block, key, true);
     }
 
-    /**
-     * Wrapper for cipher(), specifying decryption.
-     */
+
     public long decrypt(long block, long key) {
         return cipher(block, key, false);
     }
 
-
     /**
-     * Implements the DES cipher on 64 bit blocks in @param input using @param key in CBC mode.
-     * CBC mode encryption or decryption can be specified with @param encrypt.
-     *
-     * @return An array of 64 bit blocks that have been ciphered through DES CBC mode.
-     */
-    private long[] CBCMode(long[] inputs, long key, long IV, boolean encrypt) {
-        long[] outputs = new long[inputs.length];
-
-        long xor_val = IV;
-        for (int i = 0; i < inputs.length; i++)
-            if (encrypt) {
-                outputs[i] = encrypt(inputs[i] ^ xor_val, key);
-                xor_val = outputs[i];
-            } else {
-                outputs[i] = decrypt(inputs[i], key) ^ xor_val;
-                xor_val = inputs[i];
-            }
-
-        return outputs;
-    }
-
-    /**
-     * Does the main part of the DES algorithm (encrypting or decrypting).
-     * Operates on a 64 bit @param block and generates round keys from 64 bit @param key.
-     * Encryption or decryption can be specified by @param encrypt.
-     *
-     * @return A 64 bit block of primitive type long.
+     * 进行DES算法的主要部分（加密或解密）
+     * 对64位的block进行操作，并从64位的key生成循环秘钥
+     * @param block
+     * @param key
+     * @param encrypt
+     * @return
      */
     private long cipher(long block, long key, boolean encrypt) {
         long[] roundKeys = keygen.generateRoundKeys(key);
         block = initialPermutation(block);
+        // 获得两个半块
+        int leftHalf = (int) (block >> 32);
+        int rightHalf = (int) block;
 
-        int leftHalf = (int) (block >> 32);        // get 32 MSBs
-        int rightHalf = (int) block;            // get 32 LSBs
         int FOutput;
 
-        // does all 16 rounds of DES
+        // 进行16轮DES
         for (int i = 0; i < DES.NUM_OF_ROUNDS; i++) {
-            if (encrypt)
+            if (encrypt) {
                 FOutput = feistel.F(rightHalf, roundKeys[i]);
-            else
+            } else {
                 FOutput = feistel.F(rightHalf, roundKeys[(DES.NUM_OF_ROUNDS - 1) - i]);
+            }
 
-            // XOR the F function output and the left half
+            // 将f函数的输出与左半部分异或
             leftHalf ^= FOutput;
 
-            // swaps left and right halves using the XOR swapping algorithm
+            //使用异或交换
             leftHalf ^= rightHalf;
             rightHalf ^= leftHalf;
             leftHalf ^= rightHalf;
         }
 
-        // reconstruct a 64 bit block from the two halves (which get swapped)
+        //将两个半块恢复
         long joinedHalves = ((rightHalf & MASK_32_BITS) << 32 | (leftHalf & MASK_32_BITS));
 
         return finalPermutation(joinedHalves);
     }
 
     /**
-     * @param input The 64 bit block to be ciphered by DES.
-     * @return A 64 bit permutation of @param input according to table IP.
+     * 初始置换
+     * @param input
+     * @return
      */
     private long initialPermutation(long input) {
         return DES.genericPermutation(input, IP, 64);
     }
 
     /**
-     * @param input The 64 bit block ciphered by DES block cipher.
-     * @return A 64 bit permutation of @param input according to table FP.
+     * 使用FP表进行置换
+     * @param input
+     * @return
      */
     private long finalPermutation(long input) {
         return DES.genericPermutation(input, FP, 64);
     }
 
     /**
-     * Originally had all the permutation functions (S-box, P-box, PermuteChoice, etc.) separate
-     * but soon realised they are essentially doing the same function (a permutation) just returning
-     * different length bit strings. Hence a generic permutation function made more sense, and is
-     * able to differentiate between the permutations through arguments @param indexTable and @param inputLength
-     * <p>
-     * Given the 64 bit @param input, it works with the @param inputLength LSBs and the specified
-     * table in @param indexTable by looping through each bit then swapping the value with the one
-     * calculated in the index variable. As it swaps the value, it shifts the bits to the left each
-     * iteration
-     *
-     * @return The 64 bit output containing the result of the permutation from the given table.
+     * 通用置换函数
+     * @param input
+     * @param indexTable
+     * @param inputLength
+     * @return
      */
     protected static long genericPermutation(long input, byte[] indexTable, int inputLength) {
         long output = 0;

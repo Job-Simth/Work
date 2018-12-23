@@ -1,9 +1,7 @@
 package com.krokky.DES;
 
 class RoundKeyGenerator {
-    /**
-     * Values for the Permutation Choice 1 table for the initial permutation of the 56-bit key.
-     */
+
     private final static byte[] PC1 =
             {
                     57, 49, 41, 33, 25, 17, 9,
@@ -16,10 +14,7 @@ class RoundKeyGenerator {
                     21, 13, 5, 28, 20, 12, 4
             };
 
-    /**
-     * Values for the Permutation Choice 2 table for the contracting permutation step of the key
-     * halves.
-     */
+
     private final static byte[] PC2 =
             {
                     14, 17, 11, 24, 1, 5,
@@ -33,7 +28,7 @@ class RoundKeyGenerator {
             };
 
     /**
-     * Values for the number of left circular shifts to use on the key halves.
+     * 每轮移动的位数表
      */
     private final static byte[] CIRCULAR_SHIFTS =
             {
@@ -43,47 +38,30 @@ class RoundKeyGenerator {
                     2, 2, 2, 1
             };
 
-
-    /**
-     * Implements a circular left shift by @param shift bits on a 28 bit @param input.
-     *
-     * @return 28 bit string that has been circular shifted left @param shift bits.
-     */
     private int circularLeftShift(int input, int shift) {
         return ((input << shift) & DES.MASK_28_BITS) | (input >> (28 - shift));
     }
 
-    /**
-     * Takes @param input a 64 bit key.
-     *
-     * @return A 56 bit selection of the original 64 bits.
-     */
+
     private long permutationChoice1(long input) {
         return DES.genericPermutation(input, PC1, 64);
     }
 
-    /**
-     * Takes @param input a 56 bit selection of the original key.
-     *
-     * @return A 48 bit selection of the 56 bit @param input.
-     */
+
     private long permutationChoice2(long input) {
         return DES.genericPermutation(input, PC2, 56);
     }
 
-    /**
-     * Generates all the round keys from 64 bit specified key @param input.
-     *
-     * @return An array of 16 longs representing all the 48 bit round keys.
-     */
+
     long[] generateRoundKeys(long input) {
         input = permutationChoice1(input);
-        int halfA = (int) (input >> 28);            // gets 28 MSBs
-        int halfB = (int) (input & DES.MASK_28_BITS);    // masks 28 LSBs
+//        得到两个28位的块
+        int halfA = (int) (input >> 28);
+        int halfB = (int) (input & DES.MASK_28_BITS);
 
         long[] roundKeys = new long[DES.NUM_OF_ROUNDS];
 
-        // generates all the 58 bit round keys for each round of DES and stores them in an array
+//        为每轮DES生成所有58位循环密钥并将它们存储在数组中
         for (int i = 0; i < DES.NUM_OF_ROUNDS; i++) {
             halfA = circularLeftShift(halfA, CIRCULAR_SHIFTS[i]);
             halfB = circularLeftShift(halfB, CIRCULAR_SHIFTS[i]);

@@ -1,6 +1,8 @@
 package com.krokky.DES.UI;
 
 
+import com.krokky.DES.ProcessingInput;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,9 +15,9 @@ public class ui extends JFrame implements WindowListener {
         new ui();
     }
 
-    private JLabel input, output, SecretKey;
+    private JLabel Input, Output, SecretKey;
     private JTextField inputText, outputText, SecretKeyText;
-    private JButton Action;
+    private JButton Encrypt, Decrypt;
 
 
     public ui() {
@@ -23,37 +25,41 @@ public class ui extends JFrame implements WindowListener {
         setFont(new Font("", Font.BOLD, 24));
         setLayout(null);
 
-        input = new JLabel("输入:");
+        Input = new JLabel("输入:");
         SecretKey = new JLabel("秘钥:");
-        output = new JLabel("输出:");
+        Output = new JLabel("输出:");
 
         inputText = new JTextField();
         SecretKeyText = new JTextField();
         outputText = new JTextField();
 
-        Action = new JButton("加密");
+        Encrypt = new JButton("加密");
+        Decrypt = new JButton("解密");
 
-        input.setBounds(80, 20, 60, 30);
+        Input.setBounds(80, 20, 60, 30);
         SecretKey.setBounds(80, 60, 60, 30);
-        output.setBounds(80, 100, 60, 30);
+        Output.setBounds(80, 100, 60, 30);
 
         inputText.setBounds(150, 20, 200, 30);
         SecretKeyText.setBounds(150, 60, 200, 30);
         outputText.setBounds(150, 100, 200, 30);
 
-        Action.setBounds(140, 160, 180, 30);
+        Encrypt.setBounds(120, 160, 80, 30);
+        Decrypt.setBounds(240, 160, 80, 30);
 
-        add(input);
+        add(Input);
         add(SecretKey);
-        add(output);
+        add(Output);
 
         add(inputText);
         add(SecretKeyText);
         add(outputText);
 
-        add(Action);
+        add(Encrypt);
+        add(Decrypt);
 
-        Action.addActionListener(new Encrypt());
+        Encrypt.addActionListener(new doEncrypt());
+        Decrypt.addActionListener(new doDecrypt());
 
         setBounds(0, 0, PropertiesUtil.getWidth(), PropertiesUtil.getHeigth());
         setLocationRelativeTo(null);
@@ -105,13 +111,32 @@ public class ui extends JFrame implements WindowListener {
 
     }
 
-    class Encrypt implements ActionListener {
+    class doEncrypt implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String s = SecretKeyText.getText();
-            outputText.setText(s + "完成");
+            String input = inputText.getText();
+            String keys = SecretKeyText.getText();
+            long key = ProcessingInput.getKey(keys);
+            try {
+                outputText.setText(ProcessingInput.runCipherEncrypt(input, key));
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     }
 
+    private class doDecrypt implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String input = inputText.getText();
+            String keys = SecretKeyText.getText();
+            long key = ProcessingInput.getKey(keys);
+            try {
+                outputText.setText(ProcessingInput.runCipherDecrypt(input, key));
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
 }
