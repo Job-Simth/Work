@@ -7,14 +7,14 @@ public class ProcessingInput {
 
     public static void main(String[] args) {
 
-//        String s = "1234ascedesx";
-        String s = "7602f7413496a5611ab3bd61806ceca1";
+        String s = "1111111111";
+//        String s = "97686d90011aec5723a463749a3beb36";
         String keys = "11111111";
 
         long key = getKey(keys);
-//        runCipherEncrypt(s, key);
-        runCipherDecrypt(s, key);
-
+        System.out.println(runCipherEncrypt(s, key));
+//        System.out.println(runCipherDecrypt(s, key));
+//        byte[] b = new byte[]{-26, -99, -114, -27, -68, -70, -26, -104, -81, -27, -126, -69, -23, -128, -68, 0};
 
     }
 
@@ -84,17 +84,26 @@ public class ProcessingInput {
         DES des = new DES();
         byte[] bytes;
         long[] plainTexts = new long[blocks.length];
-        StringBuffer sb = new StringBuffer();
+        ArrayList<Byte> al = new ArrayList<>();
+
 
         for (int i = 0; i < blocks.length; i++) {
             plainTexts[i] = des.decrypt(blocks[i], key);
         }
         for (long block : plainTexts) {
             bytes = ByteBuffer.allocate(8).putLong(block).array();
-            System.out.print(new String(bytes));
-            sb.append(new String(bytes));
+            for (byte aByte : bytes) {
+                if (aByte != 0) {
+                    al.add(aByte);
+                }
+            }
         }
-        return sb.toString();
+        byte[] a = new byte[al.size()];
+        for (int i = 0; i < al.size(); i++) {
+            a[i] = al.get(i);
+        }
+
+        return new String(a);
     }
 
     /**
