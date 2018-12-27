@@ -1,4 +1,4 @@
-package com.krokky.DES.UI;
+package com.krokky.DES.util;
 
 import java.io.*;
 import java.util.Properties;

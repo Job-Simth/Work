@@ -1,7 +1,7 @@
-package com.krokky.DES.UI;
+package com.krokky.DES;
 
 
-import com.krokky.DES.ProcessingInput;
+import com.krokky.DES.util.PropertiesUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +10,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class ui extends JFrame implements WindowListener {
+public class Main extends JFrame implements WindowListener {
     public static void main(String[] args) {
-        new ui();
+        new Main();
     }
 
     private JLabel Input, Output, SecretKey;
@@ -20,7 +20,7 @@ public class ui extends JFrame implements WindowListener {
     private JButton Encrypt, Decrypt;
 
 
-    public ui() {
+    public Main() {
         setTitle("DES加密系统");
         setFont(new Font("", Font.BOLD, 24));
         setLayout(null);
@@ -111,29 +111,27 @@ public class ui extends JFrame implements WindowListener {
 
     }
 
-    class doEncrypt implements ActionListener {
+    public class doEncrypt implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             String input = inputText.getText();
             String keys = SecretKeyText.getText();
-            long key = ProcessingInput.getKey(keys);
             try {
-                outputText.setText(ProcessingInput.runCipherEncrypt(input, key));
+                outputText.setText(ProcessingInput.runCipherEncrypt(input, keys));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         }
     }
 
-    private class doDecrypt implements ActionListener {
+    public class doDecrypt implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String input = inputText.getText();
             String keys = SecretKeyText.getText();
-            long key = ProcessingInput.getKey(keys);
             try {
-                outputText.setText(ProcessingInput.runCipherDecrypt(input, key));
+                outputText.setText(ProcessingInput.runCipherDecrypt(input, keys));
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

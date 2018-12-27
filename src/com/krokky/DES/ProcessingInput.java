@@ -7,12 +7,11 @@ public class ProcessingInput {
 
     public static void main(String[] args) {
 
-        String s = "1111111111";
+        String s = "";
 //        String s = "97686d90011aec5723a463749a3beb36";
         String keys = "11111111";
 
-        long key = getKey(keys);
-        System.out.println(runCipherEncrypt(s, key));
+        System.out.println(runCipherEncrypt(s, keys));
 //        System.out.println(runCipherDecrypt(s, key));
 //        byte[] b = new byte[]{-26, -99, -114, -27, -68, -70, -26, -104, -81, -27, -126, -69, -23, -128, -68, 0};
 
@@ -24,7 +23,7 @@ public class ProcessingInput {
      * @param input
      * @return
      */
-    private static long[] splitInputIntoBlocks(byte[] input) {
+    public static long[] splitInputIntoBlocks(byte[] input) {
         int size;
         if (input.length % 8 == 0) {
             size = input.length / 8;
@@ -49,8 +48,9 @@ public class ProcessingInput {
         return blocks;
     }
 
-    public static String runCipherEncrypt(String s, long key) {
+    public static String runCipherEncrypt(String s, String keys) {
         byte[] text = s.getBytes();
+        long key = getKey(keys);
         long[] blocks = splitInputIntoBlocks(text);
 
         DES des = new DES();
@@ -74,11 +74,11 @@ public class ProcessingInput {
             a[i] = sl.get(i);
         }
         return byteArr2HexStr(a);
-
     }
 
-    public static String runCipherDecrypt(String s, long key) {
+    public static String runCipherDecrypt(String s, String keys) {
         byte[] text = hexStr2ByteArr(s);
+        long key = getKey(keys);
         long[] blocks = splitInputIntoBlocks(text);
 
         DES des = new DES();
