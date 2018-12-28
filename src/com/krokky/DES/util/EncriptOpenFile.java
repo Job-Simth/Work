@@ -25,6 +25,9 @@ public class EncriptOpenFile implements ActionListener {
         //将文件选择窗体show出来
         FileDialog fileDialog = new FileDialog(frame, "打开", FileDialog.LOAD);
         fileDialog.setVisible(true);
+        if (fileDialog.getDirectory() == null && fileDialog.getFile() == null) {
+            return;
+        }
         String path = fileDialog.getDirectory() + fileDialog.getFile();
 
         File file = new File(path);
